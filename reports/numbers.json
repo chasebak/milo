@@ -1,0 +1,302 @@
+{
+ "generated_by": "experiments/build_numbers.py (committed synthetic dataset)",
+ "dataset_manifest": {
+  "seed": 19,
+  "n_products": 24,
+  "weeks": 15,
+  "start": "2026-07-06",
+  "end": "2026-10-18",
+  "today": "2026-10-20",
+  "demand_spread": 1.4,
+  "elasticity_strength": 1.6,
+  "budget": 5000.0,
+  "n_events": 917,
+  "n_sold_products": 22
+ },
+ "experiment_settings": {
+  "n_scenarios": 24,
+  "n_boot": 8,
+  "main_budget": 1500.0,
+  "scenario_seed": 11,
+  "mip_gap": 0.0001,
+  "time_limit": 120,
+  "set_cap_share": 1.0,
+  "label": "in-sample, conditional on the scenario set"
+ },
+ "evpi_vss": {
+  "label": "in-sample, conditional on the scenario set",
+  "budget": 1500.0,
+  "n_scenarios": 24,
+  "ws_scenarios": 24,
+  "mip_gap": 0.0001,
+  "rp": 1568.3775260403797,
+  "rp_solver_objective": 1568.3775260403797,
+  "ev_objective": 1669.2250299567138,
+  "eev": 1488.3072680608946,
+  "ws": 1673.446171435154,
+  "evpi": 105.0686453947742,
+  "vss": 80.07025797948518,
+  "vss_pct_of_rp": 5.105292357869687,
+  "evpi_pct_of_rp": 6.699193507320704
+ },
+ "greedy_vs_milp": {
+  "budgets": [
+   {
+    "budget": 250.0,
+    "milp_objective": 591.8388182981731,
+    "greedy_objective": 560.7178015390906,
+    "gap": 31.121016759082522,
+    "gap_pct": 5.258360181336315,
+    "milp_spend": 249.76999999999998,
+    "greedy_spend": 249.67499999999998
+   },
+   {
+    "budget": 500.0,
+    "milp_objective": 801.9531347971758,
+    "greedy_objective": 767.1981055727771,
+    "gap": 34.755029224398754,
+    "gap_pct": 4.33379803835903,
+    "milp_spend": 499.65999999999997,
+    "greedy_spend": 498.66999999999996
+   },
+   {
+    "budget": 1000.0,
+    "milp_objective": 1198.8796357014414,
+    "greedy_objective": 1164.5439208962205,
+    "gap": 34.33571480522096,
+    "gap_pct": 2.863983487811251,
+    "milp_spend": 999.87,
+    "greedy_spend": 999.5099999999999
+   },
+   {
+    "budget": 1500.0,
+    "milp_objective": 1568.3775260403797,
+    "greedy_objective": 1503.5237157574982,
+    "gap": 64.85381028288157,
+    "gap_pct": 4.13508923751384,
+    "milp_spend": 1499.79,
+    "greedy_spend": 1497.9400000000023
+   },
+   {
+    "budget": 2500.0,
+    "milp_objective": 2054.0803784068776,
+    "greedy_objective": 1949.3655597382356,
+    "gap": 104.71481866864201,
+    "gap_pct": 5.097892943695694,
+    "milp_spend": 2499.7575,
+    "greedy_spend": 2497.875000000009
+   }
+  ],
+  "largest_gap_pct": 5.258360181336315
+ },
+ "hull_vs_bigm": [
+  {
+   "budget": 500.0,
+   "transform": "hull",
+   "objective": 801.9531347971758,
+   "lp_relaxation_objective": 804.1753514734817,
+   "build_seconds": 1.0379279172047973,
+   "solve_seconds": 2.0850802501663566,
+   "optimal": true,
+   "both_optimal": false,
+   "objectives_agree": false
+  },
+  {
+   "budget": 500.0,
+   "transform": "bigm",
+   "objective": 750.3034044467579,
+   "lp_relaxation_objective": 10642.59375006166,
+   "build_seconds": 0.1689339578151703,
+   "solve_seconds": 120.56714020855725,
+   "optimal": false,
+   "both_optimal": false,
+   "objectives_agree": false
+  },
+  {
+   "budget": 1500.0,
+   "transform": "hull",
+   "objective": 1568.3775260403797,
+   "lp_relaxation_objective": 1572.5957446692041,
+   "build_seconds": 1.308916375041008,
+   "solve_seconds": 3.791555584408343,
+   "optimal": true,
+   "both_optimal": false,
+   "objectives_agree": false
+  },
+  {
+   "budget": 1500.0,
+   "transform": "bigm",
+   "objective": 1372.8278523606948,
+   "lp_relaxation_objective": 10745.397126698812,
+   "build_seconds": 0.17642716597765684,
+   "solve_seconds": 120.28984254132956,
+   "optimal": false,
+   "both_optimal": false,
+   "objectives_agree": false
+  },
+  {
+   "budget": 2500.0,
+   "transform": "hull",
+   "objective": 2054.0803784068776,
+   "lp_relaxation_objective": 2089.305348777725,
+   "build_seconds": 1.0472289575263858,
+   "solve_seconds": 4.03739458322525,
+   "optimal": true,
+   "both_optimal": false,
+   "objectives_agree": false
+  },
+  {
+   "budget": 2500.0,
+   "transform": "bigm",
+   "objective": 1896.0692854313295,
+   "lp_relaxation_objective": 10745.397126698812,
+   "build_seconds": 0.1680621663108468,
+   "solve_seconds": 120.71966741699725,
+   "optimal": false,
+   "both_optimal": false,
+   "objectives_agree": false
+  }
+ ],
+ "demo": {
+  "settings": {
+   "budgets": [
+    0,
+    500,
+    1500
+   ],
+   "main_budget": 1500,
+   "n_scenarios": 24,
+   "n_boot": 8,
+   "curve_scenarios": 12,
+   "time_limit": 30
+  },
+  "plan_objective": 1492.336886581368,
+  "budget_curve": [
+   {
+    "budget": 0,
+    "objective": 345.79074893517117,
+    "spend": 0.0
+   },
+   {
+    "budget": 500,
+    "objective": 812.2689078764762,
+    "spend": 499.57
+   },
+   {
+    "budget": 1500,
+    "objective": 1497.6334038019309,
+    "spend": 1497.1824999999997
+   }
+  ],
+  "strategies": [
+   {
+    "strategy": "keep",
+    "expected": 1162.8074760973855,
+    "p10": 1122.9346046496519,
+    "p50": 1170.5883195642832,
+    "p90": 1183.7218140390114,
+    "sell_through": 0.992566510172144,
+    "leftover_value": 15.896041666666665
+   },
+   {
+    "strategy": "match_market",
+    "expected": 748.031345302182,
+    "p10": 746.5261406843382,
+    "p50": 750.205281614849,
+    "p90": 750.205281614849,
+    "sell_through": 0.9984350547730829,
+    "leftover_value": 1.462
+   },
+   {
+    "strategy": "market_minus_5",
+    "expected": 704.0215769602866,
+    "p10": 702.6833079774932,
+    "p50": 706.0131036274712,
+    "p90": 706.0131036274712,
+    "sell_through": 0.9986306729264475,
+    "leftover_value": 1.3655
+   },
+   {
+    "strategy": "market_plus_10",
+    "expected": 932.0400310497741,
+    "p10": 910.2481257536888,
+    "p50": 937.111993605417,
+    "p90": 937.111993605417,
+    "sell_through": 0.9970657276995305,
+    "leftover_value": 3.533083333333333
+   },
+   {
+    "strategy": "optimal (Pyomo)",
+    "expected": 1492.3368865813675,
+    "p10": 1382.823961636591,
+    "p50": 1488.1528830617171,
+    "p90": 1584.7324445830102,
+    "sell_through": 0.9655712050078248,
+    "leftover_value": 70.8306875
+   }
+  ]
+ },
+ "rp_seed_spread": {
+  "seeds": [
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "rp_values": [
+   1568.3775260403797,
+   1523.3522340795196,
+   1562.072843926642,
+   1546.0460639970051,
+   1590.3825106951217
+  ],
+  "mean": 1558.0462357477336,
+  "std": 25.081176626164662,
+  "min": 1523.3522340795196,
+  "max": 1590.3825106951217,
+  "spread_pct_of_mean": 4.302200735617652
+ },
+ "saa_convergence": [
+  {
+   "n_scenarios": 20,
+   "in_sample_mean": 1540.9116622104896,
+   "in_sample_std": 15.151031557299415,
+   "out_of_sample_mean": 1525.1435066476126,
+   "out_of_sample_std": 3.6974118950171726,
+   "solve_seconds_mean": 3.115577462222427,
+   "n_seeds": 10,
+   "curse_gap": 15.768155562876927
+  },
+  {
+   "n_scenarios": 40,
+   "in_sample_mean": 1537.379534630044,
+   "in_sample_std": 8.314915751950826,
+   "out_of_sample_mean": 1529.942912877955,
+   "out_of_sample_std": 2.6972216780145155,
+   "solve_seconds_mean": 5.40316265001893,
+   "n_seeds": 10,
+   "curse_gap": 7.436621752088968
+  },
+  {
+   "n_scenarios": 80,
+   "in_sample_mean": 1543.5185391169302,
+   "in_sample_std": 9.150281669612065,
+   "out_of_sample_mean": 1533.5342360268594,
+   "out_of_sample_std": 1.5350655683410914,
+   "solve_seconds_mean": 10.485636816732585,
+   "n_seeds": 10,
+   "curse_gap": 9.984303090070853
+  },
+  {
+   "n_scenarios": 160,
+   "in_sample_mean": 1537.4171342961235,
+   "in_sample_std": 4.153296123254732,
+   "out_of_sample_mean": 1534.2954111807012,
+   "out_of_sample_std": 1.1896853475176594,
+   "solve_seconds_mean": 23.969241037778556,
+   "n_seeds": 10,
+   "curse_gap": 3.1217231154223555
+  }
+ ]
+}
