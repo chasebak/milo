@@ -1,0 +1,34 @@
+{
+ "settings": {
+  "budgets": [
+   0,
+   500,
+   1500
+  ],
+  "main_budget": 1500,
+  "n_scenarios": 24,
+  "n_boot": 8,
+  "curve_scenarios": 12,
+  "time_limit": 30
+ },
+ "golden": {
+  "n_units": 17,
+  "n_sold_products": 22,
+  "demand_shape": [
+   17,
+   8,
+   24
+  ],
+  "card_share": 0.9185102989111589,
+  "units_per_order": 1.0236318407960199,
+  "traffic_test_vs_fit": 0.9900577882847387,
+  "plan_objective": 1492.336886581368,
+  "budget_curve_objectives": [
+   345.79074893517117,
+   812.2689078764762,
+   1497.6334038019309
+  ],
+  "optimal_strategy_expected": 1492.3368865813675,
+  "keep_strategy_expected": 1162.8074760973855
+ }
+}
