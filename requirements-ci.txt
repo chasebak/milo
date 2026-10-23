@@ -1,0 +1,15 @@
+# Exact pins used for CI and local verification (python 3.12).
+# pyomo is pinned because milo/optimize.py imports pyomo.contrib.solver.common.factory,
+# a path that moves between pyomo versions.
+# Regenerating the executed notebook (tools/build_notebook.py) additionally needs
+# nbclient + ipykernel (declared in the dev extras); CI does not execute the notebook.
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+pyomo==6.10.1
+highspy==1.15.1
+openpyxl==3.1.5
+pytest==9.1.1
+ruff==0.17.2
+nbformat==5.11.1
+matplotlib==3.11.2
