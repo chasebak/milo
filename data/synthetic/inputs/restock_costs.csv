@@ -1,0 +1,2 @@
+unit,product_type,price_now,market_price,cost,cost_source,min_order,max_units,salvage_frac
+seller_a|game_a|booster_box|shadow summit,booster_box,165.0,140.0,109.2,restock_costs.csv,6,12,0.85

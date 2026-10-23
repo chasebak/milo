@@ -1,0 +1,23 @@
+product,variant,units_sold,list_price,seller,sku,first_sale,last_sale,product_type,set_raw,condition,game,set,is_single,set_source,family,in_scope,needs_review,key
+Booster Box (Shadow Summit) · Sealed (Seller A),Default Title,10,165.0,seller_a,SKU-0107,2026-07-12,2026-10-15,booster_box,Shadow Summit,Sealed,game_a,shadow summit,False,title,game_a|booster_box|shadow summit,True,False,P000
+Booster Box - Ember Crown (Seller B),Default Title,14,150.0,seller_b,,2026-07-13,2026-10-15,booster_box,Ember Crown,Sealed,game_a,ember crown,False,title,game_a|booster_box|ember crown,True,False,P001
+Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,12,32.0,seller_a,SKU-0106,2026-07-09,2026-10-17,booster_bundle,Crystal Tide,Sealed,game_a,crystal tide,False,title,game_a|booster_bundle|crystal tide,True,False,P002
+Booster Pack - Shadow Summit (Seller B),Default Title,156,7.0,seller_b,,2026-07-09,2026-10-18,booster_pack,Shadow Summit,Sealed,game_a,shadow summit,False,title,game_a|booster_pack|shadow summit,True,False,P003
+Collector Crate (Shadow Summit) · Sealed (Seller A),Default Title,8,48.0,seller_a,SKU-0138,2026-07-13,2026-10-05,collection,Shadow Summit,Sealed,game_a,shadow summit,False,title,game_a|collection|shadow summit,True,False,P004
+Duskmaw 066/094 · NM (Seller A),Near Mint,10,8.0,seller_a,SKU-0136,2026-07-18,2026-10-03,single,,NM,game_a,iron verdict,True,ledger,single|game_a|iron verdict|5-20,True,False,P005
+ETB - Shadow Summit (Seller B),Default Title,28,62.0,seller_b,,2026-07-06,2026-10-18,etb,Shadow Summit,Sealed,game_a,shadow summit,False,title,game_a|etb|shadow summit,True,False,P006
+Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,16,12.0,seller_a,SKU-0133,2026-07-06,2026-10-15,single,SS01: Shadow Summit,NM,game_a,shadow summit,True,ledger,single|game_a|shadow summit|5-20,True,False,P007
+Galeheart 004/102 · Crystal Tide · LP (Seller A),Lightly Played,30,4.0,seller_a,SKU-0135,2026-07-09,2026-10-11,single,Crystal Tide,LP,game_a,crystal tide,True,ledger,single|game_a|crystal tide|<5,True,False,P008
+Game A Booster Pack (Seller A),Crystal Tide,63,5.5,seller_a,SKU-0103,2026-07-09,2026-10-18,booster_pack,Crystal Tide,Sealed,game_a,crystal tide,False,title,game_a|booster_pack|crystal tide,True,False,P009
+Game A Booster Pack (Seller A),Ember Crown,60,6.0,seller_a,SKU-0102,2026-07-10,2026-10-16,booster_pack,Ember Crown,Sealed,game_a,ember crown,False,title,game_a|booster_pack|ember crown,True,False,P010
+Game A Booster Pack (Seller A),Shadow Summit,229,6.5,seller_a,SKU-0101,2026-07-06,2026-10-18,booster_pack,Shadow Summit,Sealed,game_a,shadow summit,False,title,game_a|booster_pack|shadow summit,True,False,P011
+Game A Elite Trainer Box (Seller A) (ETB),Ember Crown,10,55.0,seller_a,SKU-0105,2026-07-20,2026-10-18,etb,Ember Crown,Sealed,game_a,ember crown,False,title,game_a|etb|ember crown,True,False,P012
+Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,40,60.0,seller_a,SKU-0104,2026-07-11,2026-10-13,etb,Shadow Summit,Sealed,game_a,shadow summit,False,title,game_a|etb|shadow summit,True,False,P013
+Mini Tin (Iron Verdict) · Sealed (Seller A),Default Title,10,43.47,seller_a,SKU-202,2026-08-07,2026-10-12,tin,Iron Verdict,Sealed,game_a,iron verdict,False,title,game_a|tin|iron verdict,True,False,P014
+Mini Tin (Lunar Bloom) · Sealed (Seller A),Default Title,15,12.0,seller_a,SKU-0108,2026-08-18,2026-10-18,tin,Lunar Bloom,Sealed,game_a,lunar bloom,False,title,game_a|tin|lunar bloom,True,False,P015
+Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,31,4.6,seller_a,SKU-200,2026-07-07,2026-10-17,single,Crystal Tide,NM,game_a,crystal tide,True,ledger,single|game_a|crystal tide|<5,True,False,P016
+Pebblit 046/139 · Lunar Bloom · NM (Seller A),Near Mint,16,36.7,seller_a,SKU-201,2026-07-24,2026-10-11,single,Lunar Bloom,NM,game_a,lunar bloom,True,ledger,single|game_a|lunar bloom|20+,True,False,P017
+Poster Collection (Ember Crown) · Sealed (Seller A),Default Title,7,42.0,seller_a,SKU-0109,2026-07-30,2026-10-15,collection,Ember Crown,Sealed,game_a,ember crown,False,title,game_a|collection|ember crown,True,False,P018
+Specialty - Lunar Bloom Booster Bundle (Seller B),Default Title,10,28.0,seller_b,,2026-07-20,2026-10-18,booster_bundle,Lunar Bloom Booster Bundle,Sealed,game_a,lunar bloom,False,title,game_a|booster_bundle|lunar bloom,True,False,P019
+Thornelk 012/078 · NM (Seller A),Near Mint,14,6.0,seller_a,SKU-0137,2026-07-23,2026-10-16,single,,NM,game_a,lunar bloom,True,ledger,single|game_a|lunar bloom|5-20,True,False,P020
+Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,12,18.0,seller_a,SKU-0134,2026-07-18,2026-10-18,single,Ember Crown,NM,game_a,ember crown,True,ledger,single|game_a|ember crown|5-20,True,False,P021

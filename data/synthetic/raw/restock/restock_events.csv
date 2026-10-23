@@ -1,0 +1,113 @@
+Vendor,Entered (PT),First selling day,Product,Variant,SKU,Units,Catch-up units,List price,Reason,By
+Seller A,2026-07-06 10:46,2026-07-06,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,64,0,6.5,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-06 13:55,2026-07-06,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,10,0,60.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-06 16:33,2026-07-06,Booster Box (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0107,4,0,165.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-06 12:47,2026-07-06,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,4,0,12.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-06 15:09,2026-07-06,Duskmaw 066/094 · NM (Seller A),Near Mint,SKU-0136,4,0,8.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-06 11:48,2026-07-06,Clip-On Plushie Charm (3.5 in) (Seller A),New,SKU-0139,8,0,20.0,Initial inventory,Web Import - Alex Rowe
+Seller B,2026-07-06 14:17,2026-07-06,ETB - Shadow Summit (Seller B),Default Title,,8,0,62.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-06 10:14,2026-07-06,Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,SKU-200,12,0,4.6,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-07 11:39,2026-07-07,Game A Booster Pack (Seller A),Ember Crown,SKU-0102,24,0,6.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-07 14:24,2026-07-07,Game A Elite Trainer Box (Seller A) (ETB),Ember Crown,SKU-0105,4,0,55.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-07 13:05,2026-07-07,Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,SKU-0134,4,0,18.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-07 16:48,2026-07-07,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,4,0,6.0,Initial inventory,Web Import - Alex Rowe
+Seller B,2026-07-07 15:26,2026-07-07,Booster Box - Ember Crown (Seller B),Default Title,,4,0,150.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-07 11:16,2026-07-07,Pebblit 046/139 · Lunar Bloom · NM (Seller A),Near Mint,SKU-201,8,0,36.7,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-08 12:14,2026-07-08,Game A Booster Pack (Seller A),Crystal Tide,SKU-0103,24,0,5.5,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-08 15:35,2026-07-08,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,4,0,32.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-08 11:54,2026-07-08,Poster Collection (Ember Crown) · Sealed (Seller A),Default Title,SKU-0109,4,0,42.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-08 14:27,2026-07-08,Galeheart 004/102 · Crystal Tide · LP (Seller A),Lightly Played,SKU-0135,12,0,4.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-08 10:08,2026-07-08,Collector Crate (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0138,4,0,48.0,Initial inventory,Web Import - Alex Rowe
+Seller B,2026-07-08 13:22,2026-07-08,Booster Pack - Shadow Summit (Seller B),Default Title,,52,0,7.0,Initial inventory,Web Import - Alex Rowe
+Seller B,2026-07-08 16:43,2026-07-08,Specialty - Lunar Bloom Booster Bundle (Seller B),Default Title,,4,0,28.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-08 12:48,2026-07-08,Mini Tin (Iron Verdict) · Sealed (Seller A),Default Title,SKU-202,4,0,43.47,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-07-17 21:13,2026-07-18,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,2,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-07-22 11:35,2026-07-22,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,2,0,32.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-07-28 15:43,2026-07-28,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,2,0,32.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-07-29 17:27,2026-07-29,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,2,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-07-31 22:53,2026-08-01,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,5,0,60.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-02 22:22,2026-08-03,Galeheart 004/102 · Crystal Tide · LP (Seller A),Lightly Played,SKU-0135,6,0,4.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-08-02 22:09,2026-08-03,Booster Box - Ember Crown (Seller B),Default Title,,2,0,150.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-03 21:24,2026-08-04,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,2,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-04 21:18,2026-08-06,Game A Elite Trainer Box (Seller A) (ETB),Ember Crown,SKU-0105,2,0,55.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-04 14:25,2026-08-04,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,2,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-05 17:28,2026-08-05,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,32,0,6.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-08 21:20,2026-08-09,Game A Booster Pack (Seller A),Ember Crown,SKU-0102,12,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-08 21:36,2026-08-09,Game A Booster Pack (Seller A),Crystal Tide,SKU-0103,12,0,5.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-08 22:39,2026-08-09,Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,SKU-200,6,0,4.6,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-09 16:27,2026-08-09,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,2,0,32.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-08-10 10:31,2026-08-10,Booster Box - Ember Crown (Seller B),Default Title,,2,0,150.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-11 21:32,2026-08-13,Duskmaw 066/094 · NM (Seller A),Near Mint,SKU-0136,2,0,8.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-12 16:49,2026-08-12,Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,SKU-0134,2,0,18.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-08-13 22:07,2026-08-14,Booster Pack - Shadow Summit (Seller B),Default Title,,26,0,7.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-08-13 21:27,2026-08-14,ETB - Shadow Summit (Seller B),Default Title,,4,0,62.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-14 13:52,2026-08-14,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,5,0,60.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-14 22:21,2026-08-15,Collector Crate (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0138,2,0,48.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-15 21:53,2026-08-16,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,2,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-15 22:14,2026-08-16,Clip-On Plushie Charm (3.5 in) (Seller A),New,SKU-0139,4,0,20.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-17 10:44,2026-08-17,Mini Tin (Lunar Bloom) · Sealed (Seller A),Default Title,SKU-0108,10,0,12.0,Initial inventory,Web Import - Alex Rowe
+Seller A,2026-08-17 12:20,2026-08-17,Tidalon (Illustration Rare) 232/217 · Graded 10 (Seller A),Graded 10,SKU-0140,4,0,85.0,Initial inventory,Web Import - Alex Rowe
+Seller B,2026-08-18 22:47,2026-08-20,Specialty - Lunar Bloom Booster Bundle (Seller B),Default Title,,2,0,28.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-20 17:28,2026-08-20,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,32,0,6.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-20 13:39,2026-08-20,Galeheart 004/102 · Crystal Tide · LP (Seller A),Lightly Played,SKU-0135,6,0,4.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-20 22:40,2026-08-21,Pebblit 046/139 · Lunar Bloom · NM (Seller A),Near Mint,SKU-201,4,0,36.7,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-25 10:05,2026-08-25,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,20,0,6.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-26 10:10,2026-08-26,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,2,0,6.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-08-26 14:11,2026-08-26,ETB - Shadow Summit (Seller B),Default Title,,4,0,62.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-27 12:07,2026-08-27,Game A Booster Pack (Seller A),Ember Crown,SKU-0102,12,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-28 15:29,2026-08-28,Game A Booster Pack (Seller A),Crystal Tide,SKU-0103,12,0,5.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-28 11:53,2026-08-28,Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,SKU-200,6,0,4.6,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-29 12:36,2026-08-29,Clip-On Plushie Charm (3.5 in) (Seller A),New,SKU-0139,4,0,20.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-08-30 12:52,2026-08-30,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,5,0,60.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-01 15:38,2026-09-01,Collector Crate (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0138,2,0,48.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-02 14:07,2026-09-02,Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,SKU-0134,2,0,18.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-02 12:31,2026-09-02,Booster Pack - Shadow Summit (Seller B),Default Title,,26,0,7.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-02 15:11,2026-09-02,Booster Box - Ember Crown (Seller B),Default Title,,2,0,150.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-03 22:40,2026-09-04,Mini Tin (Iron Verdict) · Sealed (Seller A),Default Title,SKU-202,2,0,43.47,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-04 15:53,2026-09-04,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,32,0,6.5,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-06 11:43,2026-09-06,ETB - Shadow Summit (Seller B),Default Title,,4,0,62.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-08 17:45,2026-09-08,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,2,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-09 16:26,2026-09-09,Game A Elite Trainer Box (Seller A) (ETB),Ember Crown,SKU-0105,2,0,55.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-10 22:40,2026-09-11,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,2,0,32.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-10 11:06,2026-09-10,Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,SKU-0134,2,0,18.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-12 21:04,2026-09-13,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,5,0,60.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-12 21:46,2026-09-13,Booster Box (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0107,2,0,165.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-12 22:39,2026-09-13,Booster Box - Ember Crown (Seller B),Default Title,,2,0,150.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-13 13:01,2026-09-13,Game A Booster Pack (Seller A),Crystal Tide,SKU-0103,12,0,5.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-14 14:28,2026-09-14,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,2,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-16 15:36,2026-09-16,Duskmaw 066/094 · NM (Seller A),Near Mint,SKU-0136,2,0,8.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-16 17:04,2026-09-16,Booster Pack - Shadow Summit (Seller B),Default Title,,26,0,7.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-16 13:58,2026-09-16,Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,SKU-200,6,0,4.6,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-16 14:35,2026-09-16,Pebblit 046/139 · Lunar Bloom · NM (Seller A),Near Mint,SKU-201,4,0,36.7,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-17 12:28,2026-09-17,Mini Tin (Iron Verdict) · Sealed (Seller A),Default Title,SKU-202,2,0,43.47,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-22 22:21,2026-09-24,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,32,0,6.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-22 12:21,2026-09-22,Game A Booster Pack (Seller A),Ember Crown,SKU-0102,12,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-22 11:57,2026-09-22,Game A Elite Trainer Box (Seller A) (ETB),Ember Crown,SKU-0105,2,0,55.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-23 17:31,2026-09-23,Clip-On Plushie Charm (3.5 in) (Seller A),New,SKU-0139,4,0,20.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-24 13:14,2026-09-24,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,5,0,60.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-24 10:13,2026-09-24,Booster Box (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0107,2,0,165.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-24 17:08,2026-09-24,Galeheart 004/102 · Crystal Tide · LP (Seller A),Lightly Played,SKU-0135,6,0,4.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-25 22:04,2026-09-26,ETB - Shadow Summit (Seller B),Default Title,,4,0,62.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-26 21:00,2026-09-27,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,2,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-28 12:11,2026-09-28,Mini Tin (Iron Verdict) · Sealed (Seller A),Default Title,SKU-202,2,0,43.47,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-29 21:36,2026-10-01,Poster Collection (Ember Crown) · Sealed (Seller A),Default Title,SKU-0109,2,0,42.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-09-29 12:52,2026-09-29,Specialty - Lunar Bloom Booster Bundle (Seller B),Default Title,,2,0,28.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-09-30 10:27,2026-09-30,Duskmaw 066/094 · NM (Seller A),Near Mint,SKU-0136,2,0,8.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-01 21:24,2026-10-02,Mini Tin (Lunar Bloom) · Sealed (Seller A),Default Title,SKU-0108,5,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-02 11:15,2026-10-02,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,2,0,12.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-02 22:42,2026-10-03,Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,SKU-200,6,0,4.6,Received restock,Web Import - Alex Rowe
+Seller B,2026-10-03 12:40,2026-10-03,Booster Box - Ember Crown (Seller B),Default Title,,2,0,150.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-06 22:39,2026-10-08,Duskmaw 066/094 · NM (Seller A),Near Mint,SKU-0136,2,0,8.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-10-06 22:16,2026-10-08,Booster Pack - Shadow Summit (Seller B),Default Title,,26,0,7.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-07 17:14,2026-10-07,Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,SKU-0134,2,0,18.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-07 16:45,2026-10-07,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,2,0,6.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-08 13:26,2026-10-08,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,5,0,60.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-08 12:56,2026-10-08,Booster Box (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0107,2,0,165.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-10 14:12,2026-10-10,Collector Crate (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0138,2,0,48.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-10 21:16,2026-10-11,Clip-On Plushie Charm (3.5 in) (Seller A),New,SKU-0139,4,0,20.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-10-10 16:18,2026-10-10,ETB - Shadow Summit (Seller B),Default Title,,4,0,62.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-12 15:57,2026-10-12,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,32,0,6.5,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-12 15:18,2026-10-12,Poster Collection (Ember Crown) · Sealed (Seller A),Default Title,SKU-0109,2,0,42.0,Received restock,Web Import - Alex Rowe
+Seller B,2026-10-13 13:25,2026-10-13,Specialty - Lunar Bloom Booster Bundle (Seller B),Default Title,,2,0,28.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-14 16:59,2026-10-14,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,2,0,32.0,Received restock,Web Import - Alex Rowe
+Seller A,2026-10-15 21:40,2026-10-16,Game A Booster Pack (Seller A),Crystal Tide,SKU-0103,12,0,5.5,Received restock,Web Import - Alex Rowe

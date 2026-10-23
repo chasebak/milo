@@ -1,0 +1,19 @@
+SKU,Cost (ea),Ask,Market (ea),Set,Format,Product type,Date In
+SKU-0101,$3.38,6.50,$4.90,Shadow Summit,Standard,Sealed,2026-07-01
+SKU-0102,3.00,6.00,$4.50,Ember Crown,Standard,Sealed,2026-07-01
+SKU-0103,$2.93,5.50,$4.20,Crystal Tide,Standard,Sealed,2026-07-01
+SKU-0104,33.43,60.00,$47.00,Shadow Summit,Standard,Sealed,2026-07-01
+SKU-0105,$30.44,55.00,$46.00,Ember Crown,Standard,Sealed,2026-07-01
+SKU-0106,18.10,32.00,$26.00,Crystal Tide,Standard,Sealed,2026-07-01
+SKU-0107,$106.51,165.00,$140.00,Shadow Summit,Standard,Sealed,2026-07-01
+SKU-0109,$19.96,42.00,$36.00,Ember Crown,Standard,Sealed,2026-07-01
+SKU-0133,6.30,12.00,$9.50,Shadow Summit,Standard,Single,2026-07-01
+SKU-0134,$9.38,18.00,$15.00,Ember Crown,Standard,Single,2026-07-01
+SKU-0135,1.86,4.00,$3.20,Crystal Tide,Standard,Single,2026-07-01
+SKU-0136,$3.86,8.00,$6.80,Iron Verdict,Standard,Single,2026-07-01
+SKU-0137,3.47,6.00,$5.10,Lunar Bloom,Standard,Single,2026-07-01
+SKU-0138,$24.69,48.00,$40.00,Shadow Summit,Standard,Sealed,2026-07-01
+SKU-0139,12.40,20.00,$18.00,,Standard,Sealed,2026-07-01
+SKU-0140,"$1,234.56",85.00,$80.00,,Standard,Sealed,2026-07-01
+SKU-200,3.23,4.60,$4.15,Crystal Tide,Standard,Single,2026-07-01
+SKU-201,$16.95,36.70,$27.70,Lunar Bloom,Standard,Single,2026-07-01

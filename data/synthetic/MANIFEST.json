@@ -1,0 +1,13 @@
+{
+ "seed": 19,
+ "n_products": 24,
+ "weeks": 15,
+ "start": "2026-07-06",
+ "end": "2026-10-18",
+ "today": "2026-10-20",
+ "demand_spread": 1.4,
+ "elasticity_strength": 1.6,
+ "budget": 5000.0,
+ "n_events": 917,
+ "n_sold_products": 22
+}

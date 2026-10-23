@@ -1,0 +1,24 @@
+Vendor,Product,Variant,SKU,Price,Sold,Days in stock,Steady days,Steady sale days,Bulk units left out,Days out,Sold per steady day,Other vendor units while out,Other vendor $ while out,Days store had none,Est missed units,Est missed $,Out now
+Seller A,Game A Booster Pack (Seller A),Shadow Summit,SKU-0101,6.5,229,89,89,209,20,16,2.14,0,0.0,16,34.2,222.3,no
+Seller A,Game A Booster Pack (Seller A),Ember Crown,SKU-0102,6.0,60,90,90,60,0,14,0.82,0,0.0,14,11.5,69.0,no
+Seller A,Game A Booster Pack (Seller A),Crystal Tide,SKU-0103,5.5,63,83,83,63,0,20,0.79,0,0.0,20,15.8,86.9,no
+Seller A,Game A Elite Trainer Box (Seller A) (ETB),Shadow Summit,SKU-0104,60.0,40,64,64,40,0,41,0.31,0,0.0,41,12.7,762.0,no
+Seller A,Game A Elite Trainer Box (Seller A) (ETB),Ember Crown,SKU-0105,55.0,10,94,94,10,0,10,0.11,0,0.0,10,1.1,60.5,no
+Seller A,Booster Bundle (Crystal Tide) · Sealed (Seller A),Default Title,SKU-0106,32.0,12,83,83,12,0,20,0.14,0,0.0,20,2.8,89.6,no
+Seller A,Booster Box (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0107,165.0,10,87,87,10,0,18,0.16,0,0.0,18,2.9,478.5,no
+Seller A,Mini Tin (Lunar Bloom) · Sealed (Seller A),Default Title,SKU-0108,12.0,15,57,57,15,0,6,0.31,0,0.0,6,1.9,22.8,no
+Seller A,Poster Collection (Ember Crown) · Sealed (Seller A),Default Title,SKU-0109,42.0,7,96,96,7,0,7,0.14,0,0.0,7,1.0,42.0,no
+Seller A,Emberfox 026/128 · SS01: Shadow Summit · NM (Seller A),Near Mint,SKU-0133,12.0,16,78,78,16,0,27,0.17,0,0.0,27,4.6,55.2,no
+Seller A,Tidalon ex 091/128 · Ember Crown · NM (Seller A),Near Mint,SKU-0134,18.0,12,84,84,12,0,20,0.11,0,0.0,20,2.2,39.6,no
+Seller A,Galeheart 004/102 · Crystal Tide · LP (Seller A),Lightly Played,SKU-0135,4.0,30,78,78,30,0,25,0.41,0,0.0,25,10.2,40.8,no
+Seller A,Duskmaw 066/094 · NM (Seller A),Near Mint,SKU-0136,8.0,10,91,91,10,0,14,0.09,0,0.0,14,1.3,10.4,no
+Seller A,Thornelk 012/078 · NM (Seller A),Near Mint,SKU-0137,6.0,14,82,82,14,0,22,0.14,0,0.0,22,3.1,18.6,no
+Seller A,Collector Crate (Shadow Summit) · Sealed (Seller A),Default Title,SKU-0138,48.0,8,88,88,8,0,15,0.12,0,0.0,15,1.8,86.4,no
+Seller A,Clip-On Plushie Charm (3.5 in) (Seller A),New,SKU-0139,20.0,21,81,81,21,0,24,0.26,0,0.0,24,6.2,124.0,no
+Seller B,Booster Pack - Shadow Summit (Seller B),Default Title,,7.0,156,86,86,156,0,17,1.75,0,0.0,17,29.8,208.6,no
+Seller B,ETB - Shadow Summit (Seller B),Default Title,,62.0,28,80,80,28,0,25,0.28,0,0.0,25,7.0,434.0,no
+Seller B,Booster Box - Ember Crown (Seller B),Default Title,,150.0,14,71,71,14,0,33,0.15,0,0.0,33,5.0,750.0,no
+Seller B,Specialty - Lunar Bloom Booster Bundle (Seller B),Default Title,,28.0,10,93,93,10,0,10,0.11,0,0.0,10,1.1,30.8,no
+Seller A,Mirevyn 051/207 · Crystal Tide · NM (Seller A),Near Mint,SKU-200,4.6,31,89,89,31,0,16,0.38,0,0.0,16,6.1,28.06,no
+Seller A,Pebblit 046/139 · Lunar Bloom · NM (Seller A),Near Mint,SKU-201,36.7,16,87,87,16,0,17,0.27,0,0.0,17,4.6,168.82,no
+Seller A,Mini Tin (Iron Verdict) · Sealed (Seller A),Default Title,SKU-202,43.47,10,79,79,10,0,24,0.15,0,0.0,24,3.6,156.49,no
