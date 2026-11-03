@@ -2,7 +2,7 @@
 
 Two-stage stochastic restock + pricing optimizer for a card shop — Pyomo GDP → HiGHS, with demand shrinkage, kinked elasticities, and honest EVPI/VSS experiments.
 
-[![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
+[![CI](https://github.com/chasebak/milo/actions/workflows/ci.yml/badge.svg)](https://github.com/chasebak/milo/actions/workflows/ci.yml)
 
 ![Expected profit by restock budget on the committed synthetic dataset: the exact MILP beats a greedy baseline at every budget; largest measured gap 5.26% at budget 250](docs/figs/hero.png)
 
@@ -10,13 +10,13 @@ Two-stage stochastic restock + pricing optimizer for a card shop — Pyomo GDP �
 
 ```bash
 git clone https://github.com/chasebak/milo && cd milo
-python3.12 -m venv .venv && source .venv/bin/activate  # needs Python >= 3.11
+python3.12 -m venv .venv && source .venv/bin/activate  # needs Python >= 3.12
 pip install -r requirements-ci.txt && pip install -e .
 python -m pytest -q
 python -m milo.demo
 ```
 
-Supported platforms: macOS arm64 and Linux (CI runs Ubuntu, Python 3.11–3.13; `highspy` ships wheels for both). The demo runs the whole pipeline on the committed synthetic dataset at `data/synthetic/` (schema in `SCHEMA.md`; no real store data is included), finishes in well under 90 s, and writes only to the untracked `out/`.
+Supported platforms: macOS arm64 and Linux (CI runs Ubuntu, Python 3.12–3.13; `highspy` ships wheels for both). The demo runs the whole pipeline on the committed synthetic dataset at `data/synthetic/` (schema in `SCHEMA.md`; no real store data is included), finishes in well under 90 s, and writes only to the untracked `out/`.
 
 The demo ends with this table — the optimizer's buy list priced by fixed rules vs its own jointly chosen prices (pasted verbatim from the committed `reports/numbers.json`, rendered by `python tools/build_figures.py`; rerun `python -m milo.demo` to reproduce it):
 
