@@ -44,3 +44,30 @@ jobs:
           pip install -e .
       - name: Demo
         run: python -m milo.demo
+
+  # Secret scan over the WHOLE git history (fetch-depth: 0), not just the
+  # tip: a key committed once and deleted later is still public in history.
+  # Runs the gitleaks CLI from its release tarball (the gitleaks GitHub
+  # Action needs a license key for org accounts). Pinned to an exact version;
+  # the tarball is checked against that release's published checksums file,
+  # which catches a corrupt or swapped download only if the release itself
+  # is intact. --redact keeps any found secret out of the public CI log.
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Secret scan (gitleaks, full history)
+        env:
+          GITLEAKS_VERSION: "8.18.4"
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          tarball="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -sSfL -o "$tarball" "$base/$tarball"
+          curl -sSfL -o checksums.txt "$base/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+          grep " ${tarball}\$" checksums.txt | sha256sum --check --strict -
+          tar -xzf "$tarball" gitleaks
+          ./gitleaks detect --source "$GITHUB_WORKSPACE" --redact --no-banner --exit-code 1
