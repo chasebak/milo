@@ -256,9 +256,12 @@ def _gap(res):
     return abs(bound - inc) / max(abs(inc), 1e-9)
 
 
-def solve_plan(products, prices, demand, probs=None, budget=0.0, set_cap_share=1.0,
-               transform="hull", time_limit=120, mip_gap=0.005, lp_relaxation=True):
-    """Pick buy units and one price level per product to maximize expected profit."""
+def _prepare(products, prices, demand, probs, budget, transform):
+    """Validated inputs, price tables, the M1 level filter and the M4 flag.
+
+    Shared by solve_plan and milo.ladder.solve_with_rules so both see exactly the
+    same levels, flags and flag order (the goldens pin the flag order).
+    """
     demand = np.asarray(demand, dtype=float)
     levels, probs = _check_inputs(products, prices, demand, probs)
     if transform not in ("hull", "bigm"):
@@ -278,12 +281,21 @@ def solve_plan(products, prices, demand, probs=None, budget=0.0, set_cap_share=1
         _add_flag(flags, None, "M4",
                   f"nothing affordable: budget {budget:.2f} < cheapest minimum order "
                   f"{cheapest:.2f}")
+    return {"demand": demand, "levels": levels, "probs": probs, "net_cash": net_cash,
+            "price": price, "ratio": ratio, "flags": flags, "valid": valid}
 
-    t0 = time.perf_counter()
-    model = _build_model(products, demand, probs, levels, valid, net_cash,
-                         budget, set_cap_share, flags)
-    pyo.TransformationFactory("gdp." + transform).apply_to(model)
-    build_seconds = time.perf_counter() - t0
+
+def _solve_and_read(model, products, setup, build_seconds, time_limit, mip_gap,
+                    lp_relaxation):
+    """Solve a transformed model and read the plan out; returns (result dict, HiGHS results).
+
+    The result dict has exactly the frozen solve_plan keys (INTERFACES.md); callers
+    that need more (the dual bound, a rule report) read it from the second value.
+    """
+    valid = setup["valid"]
+    ratio = setup["ratio"]
+    price = setup["price"]
+    flags = setup["flags"]
 
     t1 = time.perf_counter()
     res, has_solution = _run_highs(model, time_limit, mip_gap)
@@ -339,7 +351,7 @@ def solve_plan(products, prices, demand, probs=None, budget=0.0, set_cap_share=1
 
     buy = pd.DataFrame(buy_rows, columns=["i", "units", "spend"])
     chosen_prices = pd.DataFrame(price_rows, columns=["i", "level", "ratio", "price"])
-    return {
+    result = {
         "status": res.solution_status.name,
         "termination": termination.name,
         "optimal": bool(optimal),
@@ -353,6 +365,24 @@ def solve_plan(products, prices, demand, probs=None, budget=0.0, set_cap_share=1
         "solve_seconds": solve_seconds,
         "model": model,
     }
+    return result, res
+
+
+def solve_plan(products, prices, demand, probs=None, budget=0.0, set_cap_share=1.0,
+               transform="hull", time_limit=120, mip_gap=0.005, lp_relaxation=True):
+    """Pick buy units and one price level per product to maximize expected profit."""
+    setup = _prepare(products, prices, demand, probs, budget, transform)
+
+    t0 = time.perf_counter()
+    model = _build_model(products, setup["demand"], setup["probs"], setup["levels"],
+                         setup["valid"], setup["net_cash"], budget, set_cap_share,
+                         setup["flags"])
+    pyo.TransformationFactory("gdp." + transform).apply_to(model)
+    build_seconds = time.perf_counter() - t0
+
+    result, _ = _solve_and_read(model, products, setup, build_seconds, time_limit,
+                                mip_gap, lp_relaxation)
+    return result
 
 
 def budget_curve(products, prices, demand, budgets, **kw):

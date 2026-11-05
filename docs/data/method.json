@@ -1,0 +1,305 @@
+{
+ "bracket": {
+  "axis_max": 1750.0,
+  "axis_min": 1400.0,
+  "budget": 1500.0,
+  "eev": 1488.307268,
+  "evpi": 105.0686454,
+  "evpi_pct_of_rp": 6.699193507,
+  "positions": {
+   "eev": 0.2523064802,
+   "rp": 0.4810786458,
+   "ws": 0.7812747755
+  },
+  "rp": 1568.377526,
+  "ticks": [
+   {
+    "position": 0.0,
+    "value": 1400.0
+   },
+   {
+    "position": 0.1428571429,
+    "value": 1450.0
+   },
+   {
+    "position": 0.2857142857,
+    "value": 1500.0
+   },
+   {
+    "position": 0.4285714286,
+    "value": 1550.0
+   },
+   {
+    "position": 0.5714285714,
+    "value": 1600.0
+   },
+   {
+    "position": 0.7142857143,
+    "value": 1650.0
+   },
+   {
+    "position": 0.8571428571,
+    "value": 1700.0
+   },
+   {
+    "position": 1.0,
+    "value": 1750.0
+   }
+  ],
+  "vss": 80.07025798,
+  "vss_pct_of_rp": 5.105292358,
+  "ws": 1673.446171
+ },
+ "chartjs_tag": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js\" integrity=\"sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>",
+ "dataset": {
+  "data_dir": "data/synthetic",
+  "n_products": 24,
+  "seed": 19
+ },
+ "default_budget": 1500.0,
+ "footer": "Every number was computed by this repo's tested Python and copied; the page computes nothing.",
+ "generated_by": "python -m experiments.viz build (committed synthetic dataset)",
+ "grid_facts": {
+  "all_solves_optimal": true,
+  "greedy_profit_out_wins": [],
+  "greedy_rord_out_wins": [
+   50.0,
+   100.0,
+   200.0,
+   250.0,
+   300.0,
+   350.0
+  ],
+  "max_interpolation_error": {
+   "budget": 2300.0,
+   "error": 8.798740568
+  },
+  "n_budgets": 36,
+  "n_plans": 108,
+  "n_solves": 72,
+  "non_nested_steps": 13,
+  "optimizer_price_edits": 489,
+  "optimizer_price_edits_at_top_edge": 485,
+  "quantile_method_difference_p10": 1.398587668,
+  "solve_seconds_max": 9.887588791,
+  "solve_seconds_min": 0.115329375,
+  "solve_seconds_total": 123.7858938,
+  "widest_lead_in": {
+   "budget": 2700.0,
+   "dollars": 152.4512586,
+   "pct": 7.101603479
+  },
+  "widest_lead_out": {
+   "budget": 2700.0,
+   "dollars": 170.0790602,
+   "pct": 8.093992291
+  }
+ },
+ "headline": {
+  "budget": 1500.0,
+  "curse_gap": 47.01635191,
+  "curse_gap_pct_of_in_sample": 2.99777006,
+  "curse_rord_gap": 0.03114813643,
+  "greedy_rord_in": 0.7914241669,
+  "greedy_rord_out": 0.7631728161,
+  "lead_vs_greedy_out": 60.44551981,
+  "lead_vs_greedy_out_se": 1.298068895,
+  "lead_vs_today_out": 318.784174,
+  "lead_vs_today_out_se": 2.480168598,
+  "optimizer_in_sample": 1568.377526,
+  "optimizer_out_of_sample": 1521.361174,
+  "optimizer_price_moves": 15,
+  "optimizer_price_moves_at_top_edge": 15,
+  "optimizer_rord_in": 0.8166683002,
+  "optimizer_rord_out": 0.7855201638,
+  "rord_lift_vs_greedy_out_se": 0.000822693576,
+  "rord_out_lift_vs_greedy": 0.02234734766,
+  "today_prices_rord_in": 0.6098705974,
+  "today_prices_rord_out": 0.6024234001
+ },
+ "hull_bigm": [
+  {
+   "budget": 500.0,
+   "build_seconds": 1.037927917,
+   "lp_relaxation_objective": 804.1753515,
+   "objective": 801.9531348,
+   "optimal": true,
+   "solve_seconds": 2.08508025,
+   "transform": "hull"
+  },
+  {
+   "budget": 500.0,
+   "build_seconds": 0.1689339578,
+   "lp_relaxation_objective": 10642.59375,
+   "objective": 750.3034044,
+   "optimal": false,
+   "solve_seconds": 120.5671402,
+   "transform": "bigm"
+  },
+  {
+   "budget": 1500.0,
+   "build_seconds": 1.308916375,
+   "lp_relaxation_objective": 1572.595745,
+   "objective": 1568.377526,
+   "optimal": true,
+   "solve_seconds": 3.791555584,
+   "transform": "hull"
+  },
+  {
+   "budget": 1500.0,
+   "build_seconds": 0.176427166,
+   "lp_relaxation_objective": 10745.39713,
+   "objective": 1372.827852,
+   "optimal": false,
+   "solve_seconds": 120.2898425,
+   "transform": "bigm"
+  },
+  {
+   "budget": 2500.0,
+   "build_seconds": 1.047228958,
+   "lp_relaxation_objective": 2089.305349,
+   "objective": 2054.080378,
+   "optimal": true,
+   "solve_seconds": 4.037394583,
+   "transform": "hull"
+  },
+  {
+   "budget": 2500.0,
+   "build_seconds": 0.1680621663,
+   "lp_relaxation_objective": 10745.39713,
+   "objective": 1896.069285,
+   "optimal": false,
+   "solve_seconds": 120.7196674,
+   "transform": "bigm"
+  }
+ ],
+ "label": "The pinned problem: no set-spend cap, 24 training scenarios (seed 11), rel gap 0.0001. Not the demo's settings.",
+ "policies": [
+  "optimizer",
+  "greedy",
+  "today_prices"
+ ],
+ "policy_labels": {
+  "greedy": "careful greedy list",
+  "optimizer": "optimizer (MILP: buys + prices)",
+  "today_prices": "today's prices, buys re-optimized"
+ },
+ "policy_short_labels": {
+  "greedy": "Greedy list",
+  "optimizer": "Optimizer",
+  "today_prices": "Today's prices"
+ },
+ "provenance": {
+  "bracket": "in-sample · recorded run (reports/numbers.json)",
+  "buy_list": "synthetic · the stored plan at this budget",
+  "curve": "precomputed at 36 budgets · synthetic",
+  "fallback": "the same numbers as the chart",
+  "hull_bigm": "recorded run (reports/numbers.json) · one machine",
+  "page": "synthetic data; the page calls no solver",
+  "saa": "recorded run (reports/numbers.json) · 10 seeds per N",
+  "slider": "snaps to 36 solved budgets",
+  "tiles": "synthetic · out-of-sample: 1,000 scenarios, eval seed 999 · in-sample: 24 scenarios, seed 11"
+ },
+ "settings": {
+  "budgets": [
+   0.0,
+   50.0,
+   100.0,
+   150.0,
+   200.0,
+   250.0,
+   300.0,
+   350.0,
+   400.0,
+   450.0,
+   500.0,
+   600.0,
+   700.0,
+   800.0,
+   900.0,
+   1000.0,
+   1100.0,
+   1200.0,
+   1300.0,
+   1400.0,
+   1500.0,
+   1600.0,
+   1700.0,
+   1800.0,
+   1900.0,
+   2000.0,
+   2100.0,
+   2200.0,
+   2300.0,
+   2400.0,
+   2500.0,
+   2600.0,
+   2700.0,
+   2800.0,
+   2900.0,
+   3000.0
+  ],
+  "eval_seed": 999,
+  "mip_gap": 0.0001,
+  "n_eval": 1000,
+  "n_scenarios": 24,
+  "price_grid_high": 1.15,
+  "price_grid_low": 0.8,
+  "scenario_seed": 11,
+  "set_cap_share": 1.0,
+  "time_limit": 120
+ },
+ "tick_budgets": [
+  0.0,
+  500.0,
+  1000.0,
+  1500.0,
+  2000.0,
+  2500.0,
+  3000.0
+ ],
+ "title": "Restock Explorer",
+ "tokens_css_sha256_base64": "J3texCt1out7QFMk3jA+rC1vsZ5U8WlE3PnDZFY8OO8=",
+ "why": {
+  "budget_curve": {
+   "kind": "Simulated: each policy's plan at every solved budget, valued on the 1,000 evaluation scenarios; the dashed line is the optimizer's in-sample value and the band its out-of-sample p10 to p90.",
+   "lie": "A budget between two solved points was never solved, so the slider snaps instead of interpolating; the in-sample line never falls as the budget grows (test, within mip_gap x |bound|), but out-of-sample has no such guarantee and is shown as computed.",
+   "question": "How much profit does each budget buy, and where does the optimizer's lead open or close?"
+  },
+  "buy_list": {
+   "kind": "Modelled: the stored plan at this budget; spend = units x unit cost, and the price is the chosen level's shelf price against today's.",
+   "lie": "Spend must stay within the budget and every listed price is a level the model kept (tests); costs and demand are synthetic, so this demonstrates the method, it is not a shopping list for a real store.",
+   "question": "What exactly should the shop buy at this budget, and which prices move?"
+  },
+  "curse_gap": {
+   "kind": "Simulated: in-sample objective on the 24 training scenarios minus the same plan's value on the 1,000 evaluation scenarios.",
+   "lie": "Out-of-sample has no sign guarantee, so the gap is reported, never asserted; with 24 scenarios seed noise is large (EXPERIMENTS.md §5).",
+   "question": "How much does the in-sample number flatter itself?"
+  },
+  "evpi_vss": {
+   "kind": "Modelled, in-sample: EEV (the average-scenario plan re-valued on the scenarios) <= RP (the stochastic plan) <= WS (perfect foresight per scenario); VSS = RP - EEV and EVPI = WS - RP.",
+   "lie": "Both are in-sample on the pinned 24 scenarios, not out-of-sample guarantees; a solve stopped short of its gap could break the order, so a test asserts EEV <= RP <= WS within the gap.",
+   "question": "Is planning for uncertainty worth it, and how much could perfect forecasts add?"
+  },
+  "fair_baseline": {
+   "kind": "Modelled: today's prices held fixed (ratio 1.00) while the buys are re-optimized by the same MILP, so the only thing it lacks is price choice.",
+   "lie": "A same-buys-at-today's-prices row would be a straw man; this row re-optimizes the buys (test: it equals the price-edit limit P = 0 rung within the gap).",
+   "question": "Is the lift just repricing, or does planning the buys matter too?"
+  },
+  "hull_bigm": {
+   "kind": "Counted: wall-clock seconds and termination status per solve, on identical instances with the same rel gap and a 120 s limit.",
+   "lie": "Timings depend on the machine and the HiGHS version (one recorded run); the result column records whether each solve reached the gap, so a timeout is never shown as optimal.",
+   "question": "Does the weekly tool solve fast enough to trust its answer?"
+  },
+  "rord": {
+   "kind": "Simulated: each policy's plan is valued on 1,000 fresh scenarios (eval seed 999) from the model's own demand generator, minus the same policy's budget-0 plan, divided by what it spent.",
+   "lie": "It flatters the optimizer if the evaluation set leaks into training (test: eval seed 999 is never a training seed) and it is only as true as the generator, so it is out-of-sample on the model's own generator, not on a real store.",
+   "question": "What does each restock dollar return, on demand the plan never saw?"
+  },
+  "saa": {
+   "kind": "Simulated: for N = 20 to 160 training scenarios, 10 seeds each, the plan's in-sample objective against its value on the 1,000 evaluation scenarios.",
+   "lie": "The gap shrinks with N on average but not at every step, and one seed can sit above or below the seed mean (EXPERIMENTS.md §5 prints the spread); the evaluation seed is never a training seed (test).",
+   "question": "Are 24 training scenarios enough?"
+  }
+ }
+}

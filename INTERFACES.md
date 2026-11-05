@@ -44,3 +44,11 @@ Returns `(profit, summary)`: a numpy array of length n_scenarios and a dict with
 - `demand`: numpy array of shape (n_products, n_levels, n_scenarios), non-negative and
   non-increasing in `k`.
 - `probs`: optional scenario probabilities (uniform when None).
+
+## Not frozen: milo/ladder.py
+
+`solve_with_rules(products, prices, demand, rules=None, probs=None, budget=0.0,
+set_cap_share=1.0, transform="hull", time_limit=120, mip_gap=0.005, lp_relaxation=False)`
+returns every `solve_plan` key plus `objective_bound`, `rule_report`, `n_variables`,
+`n_integer_variables` and `n_constraints`. With `rules=None` it builds exactly the
+`solve_plan` model (tested). It is new and may still change; `solve_plan` does not.

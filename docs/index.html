@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restock Explorer</title>
+<meta name="description" content="Drag one restock budget and watch a two-stage stochastic optimizer, a careful greedy list and today's prices each pick a buy list, scored on fresh synthetic demand scenarios.">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .control .ticks.stops { display: block; position: relative; height: 30px; margin: 2px 9px 0; }
+  .stops .stop { position: absolute; top: 0; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+  .stops .stop.first { transform: none; text-align: left; }
+  .stops .stop.last { transform: translateX(-100%); text-align: right; }
+  .stops .mark { display: block; width: 1px; height: 6px; margin: 0 auto 2px; background: var(--border); }
+  .stops .stop.first .mark { margin-left: 0; }
+  .stops .stop.last .mark { margin-right: 0; }
+  .stops .stop.on .mark { background: var(--accent); height: 8px; }
+  .budget-now { font-variant-numeric: tabular-nums; color: var(--accent); }
+  .chart-fallback { color: var(--text-muted); font-size: 0.9rem; margin: 8px 0; }
+  .note-line { font-size: 0.85rem; color: var(--text-muted); margin: 8px 0 0; }
+  .segmented { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px; }
+  .segmented button {
+    font: inherit; font-size: 0.9rem; padding: 4px 12px; cursor: pointer;
+    border: 1px solid var(--border); border-radius: 999px;
+    background: var(--surface); color: var(--text);
+  }
+  .segmented button[aria-pressed="true"] { border-color: var(--accent); background: var(--surface-2); color: var(--accent); font-weight: 600; }
+  tr.chosen td { background: var(--surface-2); font-weight: 600; }
+  td.num, th.num { text-align: right; }
+  .why p { margin: 0; }
+  details summary { cursor: pointer; color: var(--accent); margin: 8px 0; }
+  .whys .why + .why { margin-top: 8px; }
+  .tile.baseline { border-color: var(--baseline); }
+  .tile .value small { font-size: 0.8rem; font-weight: 400; color: var(--text-muted); }
+  .bracket-wrap { max-width: 560px; margin: 8px auto 0; }
+  .bracket-wrap svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .bracket-wrap .axis { stroke: var(--border); stroke-width: 1; }
+  .bracket-wrap .tick { stroke: var(--border); stroke-width: 1; }
+  .bracket-wrap .tick-label { fill: var(--text-muted); font-size: 10px; font-family: var(--font); }
+  .bracket-wrap .dot-rp { fill: var(--accent); }
+  .bracket-wrap .dot-eev { fill: var(--baseline); }
+  .bracket-wrap .dot-ws { fill: var(--series-3); }
+  .bracket-wrap .dot-label { fill: var(--text); font-size: 11px; font-weight: 600; font-family: var(--font); }
+  .bracket-wrap .dot-value { fill: var(--text-muted); font-size: 10px; font-family: var(--font); }
+  .bracket-wrap .brace { fill: none; stroke-width: 1.5; }
+  .bracket-wrap .brace-vss { stroke: var(--series-2); }
+  .bracket-wrap .brace-evpi { stroke: var(--series-4); }
+  .bracket-wrap .brace-label { font-size: 11px; font-weight: 600; font-family: var(--font); }
+  .bracket-wrap .brace-label.vss { fill: var(--series-2); }
+  .bracket-wrap .brace-label.evpi { fill: var(--series-4); }
+  .plain { margin: 8px 0 0; padding-left: 18px; font-size: 0.9rem; }
+  .plain li + li { margin-top: 4px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Restock Explorer</h1>
+  <p class="lede">A card shop has one restock budget and a shelf of products it can buy and reprice. Drag the budget: an exact two-stage stochastic optimizer, a careful greedy list and today's prices (with the buys re-optimized) each pick a buy list, and each plan is graded on <span id="n-eval"></span> demand scenarios it never saw.</p>
+  <p id="load-error" class="bad" hidden>The page data did not load. Serve the docs folder over HTTP (for example <code>python -m http.server -d docs</code>) instead of opening the file directly.</p>
+  <p class="note-line" id="problem-label"></p>
+
+  <section class="card" id="budget-card">
+    <span class="provenance" data-prov="slider"></span>
+    <div class="control">
+      <label for="budget">Restock budget: <span class="budget-now" id="budget-now"></span></label>
+      <input type="range" id="budget" min="0" max="0" step="1" value="0">
+      <div class="ticks stops" id="ticks" aria-hidden="true"></div>
+    </div>
+    <h2>At <span class="budget-now" data-budget-now></span>: profit per restock dollar, out-of-sample</h2>
+    <span class="provenance" data-prov="tiles"></span>
+    <div class="tiles" id="tiles"></div>
+    <p class="note-line" id="tiles-note"></p>
+    <div class="whys">
+      <div class="why" data-why="rord"></div>
+      <div class="why" data-why="fair_baseline"></div>
+      <div class="why" data-why="curse_gap"></div>
+    </div>
+  </section>
+
+  <section class="card" id="curve-card">
+    <h2>Expected profit at every solved budget</h2>
+    <span class="provenance" data-prov="curve"></span>
+    <div class="chart-box" id="chart-box">
+      <canvas id="chart" role="img" aria-label="Out-of-sample expected profit against the restock budget for the optimizer, the greedy list and today's prices, with the optimizer's in-sample value dashed and its p10 to p90 band"></canvas>
+    </div>
+    <p class="chart-fallback" id="chart-fallback" hidden>chart unavailable, table shown</p>
+    <p class="note-line" id="curve-note"></p>
+    <details id="fallback-details">
+      <summary>The numbers behind the chart</summary>
+      <span class="provenance" data-prov="fallback"></span>
+      <div class="table-wrap"><table id="fallback-table"></table></div>
+    </details>
+    <div class="why" data-why="budget_curve"></div>
+  </section>
+
+  <section class="card" id="buy-card">
+    <h2>The buy list at <span class="budget-now" data-budget-now></span></h2>
+    <span class="provenance" data-prov="buy_list"></span>
+    <div class="segmented" id="buy-policies" role="group" aria-label="Whose buy list to show"></div>
+    <p id="buy-summary"></p>
+    <div class="table-wrap"><table id="buy-table"></table></div>
+    <div class="why" data-why="buy_list"></div>
+  </section>
+
+  <section class="card" id="bracket-card">
+    <h2>Is planning for uncertainty worth it? EEV → RP → WS</h2>
+    <span class="provenance" data-prov="bracket"></span>
+    <div class="bracket-wrap">
+      <svg id="bracket-svg" viewBox="0 0 360 104" role="img" aria-labelledby="bracket-title">
+        <title id="bracket-title">Expected profit of the average-scenario plan (EEV), the stochastic plan (RP) and perfect foresight (WS) on one axis, with VSS and EVPI as brackets</title>
+        <g id="bracket-braces"></g>
+        <line class="axis" id="bracket-axis" x1="20" y1="78" x2="340" y2="78"></line>
+        <g id="bracket-ticks"></g>
+        <g id="bracket-dots"></g>
+      </svg>
+    </div>
+    <ul class="plain">
+      <li id="bracket-vss"></li>
+      <li id="bracket-evpi"></li>
+    </ul>
+    <details id="bracket-details">
+      <summary>The numbers behind the bracket</summary>
+      <div class="table-wrap"><table id="bracket-table"></table></div>
+    </details>
+    <div class="why" data-why="evpi_vss"></div>
+  </section>
+
+  <section class="card" id="saa-card">
+    <h2>Are <span id="n-train"></span> training scenarios enough?</h2>
+    <span class="provenance" data-prov="saa"></span>
+    <div class="chart-box" id="saa-box">
+      <canvas id="saa-chart" role="img" aria-label="Mean in-sample objective and mean out-of-sample value against the number of training scenarios, with the pinned seed's two values marked"></canvas>
+    </div>
+    <p class="chart-fallback" id="saa-fallback" hidden>chart unavailable, table shown</p>
+    <p class="note-line" id="saa-note"></p>
+    <details id="saa-details">
+      <summary>The numbers behind the chart</summary>
+      <div class="table-wrap"><table id="saa-table"></table></div>
+    </details>
+    <div class="why" data-why="saa"></div>
+    <h2>Solve time: hull against big-M</h2>
+    <span class="provenance" data-prov="hull_bigm"></span>
+    <div class="table-wrap"><table id="hull-table"></table></div>
+    <div class="why" data-why="hull_bigm"></div>
+  </section>
+
+  <footer>
+    <p id="footer-text"></p>
+    <p>Data: <a href="data/budget_grid.json">budget_grid.json</a> · <a href="data/method.json">method.json</a> · <a href="data/saa.json">saa.json</a>, written by <code>python -m experiments.viz build</code>. All data is synthetic.</p>
+  </footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="app.js"></script>
+</body>
+</html>

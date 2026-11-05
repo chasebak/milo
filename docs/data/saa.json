@@ -1,0 +1,90 @@
+{
+ "curse_gap_shape": {
+  "monotone": false,
+  "rises": [
+   {
+    "from_gap": 7.436621752,
+    "from_n": 40,
+    "to_gap": 9.98430309,
+    "to_n": 80
+   }
+  ]
+ },
+ "generated_by": "python -m experiments.viz build, copied from reports/numbers.json and reports/scorecard.json",
+ "pinned": {
+  "budget": 1500.0,
+  "curse_gap": 47.01635191,
+  "in_sample": 1568.377526,
+  "in_seed_sds": 0.4119140998,
+  "minus_seed_mean": 10.33129029,
+  "n_scenarios": 24,
+  "n_seeds": 5,
+  "out_of_sample": 1521.361174,
+  "rank_from_top": 2,
+  "seed": 11
+ },
+ "provenance": "recorded run (reports/numbers.json) · 10 seeds per N",
+ "rows": [
+  {
+   "curse_gap": 15.76815556,
+   "in_sample_mean": 1540.911662,
+   "in_sample_std": 15.15103156,
+   "n_scenarios": 20,
+   "n_seeds": 10,
+   "out_of_sample_mean": 1525.143507,
+   "out_of_sample_std": 3.697411895,
+   "solve_seconds_mean": 3.115577462
+  },
+  {
+   "curse_gap": 7.436621752,
+   "in_sample_mean": 1537.379535,
+   "in_sample_std": 8.314915752,
+   "n_scenarios": 40,
+   "n_seeds": 10,
+   "out_of_sample_mean": 1529.942913,
+   "out_of_sample_std": 2.697221678,
+   "solve_seconds_mean": 5.40316265
+  },
+  {
+   "curse_gap": 9.98430309,
+   "in_sample_mean": 1543.518539,
+   "in_sample_std": 9.15028167,
+   "n_scenarios": 80,
+   "n_seeds": 10,
+   "out_of_sample_mean": 1533.534236,
+   "out_of_sample_std": 1.535065568,
+   "solve_seconds_mean": 10.48563682
+  },
+  {
+   "curse_gap": 3.121723115,
+   "in_sample_mean": 1537.417134,
+   "in_sample_std": 4.153296123,
+   "n_scenarios": 160,
+   "n_seeds": 10,
+   "out_of_sample_mean": 1534.295411,
+   "out_of_sample_std": 1.189685348,
+   "solve_seconds_mean": 23.96924104
+  }
+ ],
+ "seed_spread": {
+  "max": 1590.382511,
+  "mean": 1558.046236,
+  "min": 1523.352234,
+  "rp_values": [
+   1568.377526,
+   1523.352234,
+   1562.072844,
+   1546.046064,
+   1590.382511
+  ],
+  "seeds": [
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "spread_pct_of_mean": 4.302200736,
+  "std": 25.08117663
+ }
+}

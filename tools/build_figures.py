@@ -1,18 +1,23 @@
-"""Build docs/figs/hero.png and print every doc table/number from reports/numbers.json.
+"""Build docs/figs/hero.png from reports/numbers.json and print every generated doc block.
 
 The docs (README.md, EXPERIMENTS.md) carry no hand-typed numbers: every table and
-headline value they show is printed by this script from reports/numbers.json and
-pasted verbatim. Rerun after regenerating numbers.json:
+headline value sits in a generated block that tools/render_docs.py rewrites from the
+committed reports. Rerun after regenerating the reports:
 
-    python tools/build_figures.py
+    python tools/build_figures.py      # the hero figure (+ prints the blocks)
+    python tools/render_docs.py        # rewrite the blocks in README.md / EXPERIMENTS.md
 """
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import render_docs  # noqa: E402
 
 PROJECT = Path(__file__).resolve().parents[1]
 NUMBERS = PROJECT / "reports" / "numbers.json"
@@ -74,8 +79,8 @@ def hero_figure(numbers, png_path):
         position += 1
     worst_x = budgets[worst_index]
     worst_y = greedy_values[worst_index]
-    worst_label = ("largest measured gap: " + pct(gaps_pct[worst_index])
-                   + " at budget " + format(worst_x, ",.0f"))
+    worst_label = ("largest gap of these " + str(len(budgets)) + " budgets: " + pct(gaps_pct[worst_index])
+                   + " at \\$" + format(worst_x, ",.0f"))
     ax.annotate(worst_label, xy=(worst_x, worst_y), xytext=(14, -4),
                 textcoords="offset points", color=MUTED, fontsize=9, va="top")
 
@@ -98,142 +103,17 @@ def hero_figure(numbers, png_path):
     return png_path
 
 
-def markdown_table(header, rows):
-    lines = []
-    lines.append("| " + " | ".join(header) + " |")
-    separators = []
-    for _ in header:
-        separators.append("---")
-    lines.append("| " + " | ".join(separators) + " |")
-    for row in rows:
-        lines.append("| " + " | ".join(row) + " |")
-    return "\n".join(lines)
-
-
-def evpi_vss_table(numbers):
-    ev = numbers["evpi_vss"]
-    rows = []
-    rows.append(["RP (two-stage stochastic optimum)", money(ev["rp"])])
-    rows.append(["EEV (mean-value plan, re-valued on the scenarios)", money(ev["eev"])])
-    rows.append(["WS (wait-and-see bound)", money(ev["ws"])])
-    rows.append(["EVPI = WS − RP", money(ev["evpi"]) + " (" + pct(ev["evpi_pct_of_rp"]) + " of RP)"])
-    rows.append(["VSS = RP − EEV", money(ev["vss"]) + " (" + pct(ev["vss_pct_of_rp"]) + " of RP)"])
-    return markdown_table(["quantity (expected profit, $)", "value"], rows)
-
-
-def greedy_table(numbers):
-    rows = []
-    gap_values = []
-    for entry in numbers["greedy_vs_milp"]["budgets"]:
-        gap_values.append(entry["gap_pct"])
-        rows.append([money(entry["budget"]), money(entry["milp_objective"]),
-                     money(entry["greedy_objective"]), money(entry["gap"]),
-                     pct(entry["gap_pct"])])
-    table = markdown_table(["budget ($)", "exact MILP ($)", "greedy ($)", "gap ($)", "gap (% of MILP)"], rows)
-    gap_range = pct(min(gap_values)) + "–" + pct(max(gap_values))
-    return table, gap_range
-
-
-def hull_bigm_table(numbers):
-    # "optimal" in numbers.json means HiGHS stopped because the relative MIP gap reached
-    # the experiment tolerance, not that it closed the gap to zero. The label says how
-    # close, read from the pinned setting so it cannot drift from the solves themselves.
-    gap_percent = numbers["experiment_settings"]["mip_gap"] * 100.0
-    within_gap = "optimal within a " + pct(gap_percent) + " gap"
-    rows = []
-    bound_ratios = []
-    hull_bounds = {}
-    for entry in numbers["hull_vs_bigm"]:
-        if entry["transform"] == "hull":
-            hull_bounds[entry["budget"]] = entry["lp_relaxation_objective"]
-    for entry in numbers["hull_vs_bigm"]:
-        if entry["transform"] == "bigm":
-            ratio = entry["lp_relaxation_objective"] / hull_bounds[entry["budget"]]
-            bound_ratios.append(ratio)
-        status = within_gap if entry["optimal"] else "time limit (120 s)"
-        rows.append([money(entry["budget"]), entry["transform"], money(entry["objective"]),
-                     money(entry["lp_relaxation_objective"]),
-                     format(entry["build_seconds"], ".2f"), format(entry["solve_seconds"], ".1f"),
-                     status])
-    table = markdown_table(["budget ($)", "transform", "incumbent ($)", "LP bound ($)",
-                            "build (s)", "solve (s)", "result"], rows)
-    ratio_range = format(min(bound_ratios), ".1f") + "x–" + format(max(bound_ratios), ".1f") + "x"
-    return table, ratio_range
-
-
-def saa_table(numbers):
-    rows = []
-    for entry in numbers["saa_convergence"]:
-        rows.append([str(entry["n_scenarios"]), money(entry["in_sample_mean"]),
-                     format(entry["in_sample_std"], ".2f"), money(entry["out_of_sample_mean"]),
-                     format(entry["out_of_sample_std"], ".2f"), format(entry["curse_gap"], ".2f"),
-                     format(entry["solve_seconds_mean"], ".1f")])
-    header = ["N (training scenarios)", "in-sample mean ($)", "in-sample std",
-              "out-of-sample mean ($)", "out-of-sample std", "curse gap ($)", "solve (s, mean)"]
-    return markdown_table(header, rows)
-
-
-def strategy_table(numbers):
-    rows = []
-    for entry in numbers["demo"]["strategies"]:
-        rows.append([entry["strategy"], money(entry["expected"]), money(entry["p10"]),
-                     money(entry["p90"]), format(entry["sell_through"], ".3f"),
-                     money(entry["leftover_value"])])
-    header = ["pricing strategy (same buy list)", "expected ($)", "p10 ($)", "p90 ($)",
-              "sell-through", "leftover value ($)"]
-    return markdown_table(header, rows)
-
-
-def budget_curve_table(numbers):
-    rows = []
-    for entry in numbers["demo"]["budget_curve"]:
-        rows.append([money(entry["budget"]), money(entry["objective"]), money(entry["spend"])])
-    return markdown_table(["budget ($)", "expected profit ($)", "spend ($)"], rows)
-
-
-def seed_spread_lines(numbers):
-    spread = numbers["rp_seed_spread"]
-    values = []
-    for value in spread["rp_values"]:
-        values.append(money(value))
-    lines = []
-    lines.append("RP across scenario-set seeds " + str(spread["seeds"]) + ": " + ", ".join(values))
-    lines.append("mean " + money(spread["mean"]) + ", std " + format(spread["std"], ".2f")
-                 + ", spread " + pct(spread["spread_pct_of_mean"]) + " of the mean")
-    return "\n".join(lines)
-
-
 def main():
     numbers = load_numbers()
     hero_path = hero_figure(numbers, FIGS / "hero.png")
     print("wrote", hero_path.relative_to(PROJECT))
-
-    print("\n== EVPI / VSS table ==")
-    print(evpi_vss_table(numbers))
-    greedy_md, gap_range = greedy_table(numbers)
-    print("\n== greedy vs MILP table ==")
-    print(greedy_md)
-    print("greedy gap range across budgets: " + gap_range)
-    hull_md, ratio_range = hull_bigm_table(numbers)
-    print("\n== hull vs bigm table ==")
-    print(hull_md)
-    print("big-M LP bound looser than hull by: " + ratio_range)
-    print("\n== SAA convergence table ==")
-    print(saa_table(numbers))
-    print("\n== demo strategy table ==")
-    print(strategy_table(numbers))
-    print("\n== demo budget curve ==")
-    print(budget_curve_table(numbers))
-    print("\n== RP seed spread ==")
-    print(seed_spread_lines(numbers))
-    ev = numbers["evpi_vss"]
-    print("\n== headline ==")
-    print("RP " + money(ev["rp"]) + " | EEV " + money(ev["eev"]) + " | WS " + money(ev["ws"])
-          + " | EVPI " + money(ev["evpi"]) + " (" + pct(ev["evpi_pct_of_rp"]) + " of RP)"
-          + " | VSS " + money(ev["vss"]) + " (" + pct(ev["vss_pct_of_rp"]) + " of RP)")
-    print("EV solver objective on the mean scenario: " + money(ev["ev_objective"]))
-    demo = numbers["demo"]
-    print("demo plan objective " + money(demo["plan_objective"]))
+    # Every doc table is rendered by tools/render_docs.py (one copy of each renderer);
+    # print them here too so a rerun shows what the docs will carry.
+    reports = render_docs.load_reports()
+    names = sorted(render_docs.BLOCKS.keys())
+    for name in names:
+        print("\n== " + name + " ==")
+        print(render_docs.BLOCKS[name](reports))
 
 
 if __name__ == "__main__":

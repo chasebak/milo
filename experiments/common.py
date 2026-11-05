@@ -25,6 +25,7 @@ N_SCENARIOS = 24
 N_BOOT = 8
 MAIN_BUDGET = 1500.0
 SCENARIO_SEED = 11          # build_scenarios seed, as used by pipeline.run
+HORIZON_WEEKS = 8           # planning horizon of every scenario set (pipeline.run's default)
 
 EXPERIMENT_GAP = 1e-4       # rel gap for every experiment solve
 EXPERIMENT_TIME_LIMIT = 120  # seconds per solve
@@ -48,7 +49,7 @@ def load_problem(data_dir=pipeline.DEFAULT_DATA, today=pipeline.DEFAULT_TODAY,
     sens = pipeline.price_sensitivity(data, online["products"], n_boot=n_boot)
     units = pipeline.restock_units(data, rates, online["products"])
     grid, demand_array = pipeline.build_scenarios(
-        units, sens["elasticities"], horizon_weeks=8, lead_weeks=1, traffic_mult=1.0,
+        units, sens["elasticities"], horizon_weeks=HORIZON_WEEKS, lead_weeks=1, traffic_mult=1.0,
         online_index=unit_index, season_uplift=1.3, n_scenarios=n_scenarios, seed=seed,
         card_share=data["card_share"], units_per_order=data["units_per_order"],
         config=data["config"])
@@ -66,7 +67,7 @@ def load_problem(data_dir=pipeline.DEFAULT_DATA, today=pipeline.DEFAULT_TODAY,
 def make_demand(problem, n_scenarios, seed):
     """A fresh scenario set for the same units/elasticities (used by SAA and RP spread)."""
     grid, demand_array = pipeline.build_scenarios(
-        problem["units"], problem["elasticities"], horizon_weeks=8, lead_weeks=1,
+        problem["units"], problem["elasticities"], horizon_weeks=HORIZON_WEEKS, lead_weeks=1,
         traffic_mult=1.0, online_index=problem["unit_index"], season_uplift=1.3,
         n_scenarios=n_scenarios, seed=seed, card_share=problem["card_share"],
         units_per_order=problem["units_per_order"], config=problem["config"])

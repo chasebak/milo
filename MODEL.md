@@ -2,7 +2,7 @@
 
 This file defines the model the code implements and the P/M/D vocabulary the docstrings
 use. Results live in `EXPERIMENTS.md`; every number there comes from
-`reports/numbers.json`.
+`reports/numbers.json`, `reports/scorecard.json` or `reports/constraint_ladder.json`.
 
 ## 1. The optimization problem
 
@@ -40,6 +40,41 @@ of a disjunction gives the tightest possible continuous relaxation of each disju
 at the cost of more variables; big-M is smaller but its relaxation is only as good as
 its M constants (Grossmann & Trespalacios 2013). On this model the difference is not
 cosmetic — see the measured table in `EXPERIMENTS.md` §3.
+
+## 1b. Business rules: the constraint ladder (`milo/ladder.py`)
+
+`solve_with_rules` builds exactly `solve_plan`'s GDP model and attaches the enabled
+rules **before** the hull (or big-M) transform, so they can use the disjunct binaries;
+with every rule off the model is identical (same variable and constraint counts,
+tested). Each rule has a *kind*, and the kind decides its test:
+
+- a **restriction** shrinks the feasible set, so it can only lower the optimum; its
+  price is `obj(looser) − obj(restricted) ≥ 0`, checked within `mip_gap × |bound|`;
+- an **accounting** rung changes how money is counted with the same feasible set; its
+  value is `obj(new plan, new accounting) − value(old plan, new accounting) ≥ 0`, the
+  VSS logic. Fees in the objective (R0b against the fee-blind R0a) is this kind.
+
+**R1 shelf space (restriction).** One linear row, no new variables:
+`Σ_i v_i (q_i + x_i) ≤ V`, with `v_i` the space per unit of the product's type (§7).
+If on-hand stock alone exceeds `V`, the row would be infeasible; a `SHELF` flag fires
+and only space-free buys remain allowed — never a silent infeasible solve.
+
+**R2 weekly price-edit limit (restriction).** In a POS-only store each price change is
+a relabel plus a CSV upload. With `y_i,now` the binary of product i's ratio-1.00 price
+disjunct (0 if M1 dropped that level) and `o_i` the binary of its order-yes disjunct,
+`e_i ∈ {0,1}`:
+
+```
+stocked now (q_i > 0):   e_i ≥ 1 − y_i,now
+not stocked now:         e_i ≥ (1 − y_i,now) + o_i − 1      (the AND trick: bought AND moved)
+never orderable, q_i=0:  no e_i (it can never be on the shelf)
+Σ_i e_i ≤ P
+```
+
+An unstocked, unbought product never counts; a stocked product whose 1.00 level was
+dropped must move, so it is a forced edit — if forced edits exceed `P`, the limit is
+raised to that count and an `EDITS` flag says so. The fair "today's prices" baseline of
+the scorecard is the same problem as `P = 0` (tested).
 
 ## 2. Demand estimation (P1–P3)
 
@@ -153,6 +188,8 @@ scenarios (all defined above).
 | `M5` | lumpiness gap: LP relaxation beats the MILP by more than rounding — integrality is costing real money |
 | `M10` | HiGHS stopped without reaching the requested rel gap (`mip_gap`; any termination other than convergence, e.g. the time limit), so the plan is not certified optimal within that gap; termination and achieved gap attached |
 | `MIN_ORDER` | `max_units < min_order`, so `x_i` is fixed to 0 |
+| `SHELF` | (ladder R1) on-hand stock alone exceeds the shelf capacity; only space-free buys remain allowed |
+| `EDITS` | (ladder R2) more stocked products lost their 1.00 price level (M1) than the edit limit allows; the limit is raised to that count |
 
 **M-rules referenced in docstrings** (behavior, not emitted flags): M9 lead time (an
 out-of-stock product's demand window waits out `lead_weeks`; an in-stock product's does
@@ -165,6 +202,28 @@ M18 condition matching between store and feed; M22 feed-mapping review flags.
 **D-codes** — data edge cases. The two that survive in this repo: D1 (sold-out days
 carry no demand information and are excluded from exposure) and D8 (the holiday uplift
 is a scenario input, never estimated from the committed window).
+
+## 7. Assumptions
+
+Every knob the scorecard and the ladder depend on, read from the code that uses it
+(rendered by `python tools/render_docs.py`). Source classes: measured / published
+default / illustrative / design choice.
+
+<!-- generated:assumptions -->
+| knob | value | source | what changes if wrong | flag that fires when it binds |
+| --- | --- | --- | --- | --- |
+| store commission | 10% | illustrative | every net-cash value moves; the fee-blind row shows how much fees matter | none (a required config value) |
+| card fee, per-order fee | 2.9%, $0.30 | published default | small: fees are close to proportional | none |
+| price grid | 0.80x to 1.15x today's price | design choice | an optimum at the edge may sit outside the grid | M2 / M3 |
+| shelf space per unit (pack-equivalents) | booster_box 12, booster_bundle 4, booster_pack 1, collection 6, etb 8, single 0.5, tin 4 | illustrative | R1's price and the units-by-type shift; swept capacity limits the damage | SHELF when on-hand alone exceeds V |
+| shelf capacity V | 50%, 70%, 90%, 100% of today's plan's use | design choice (swept) | the price of R1 is only read at these points | SHELF |
+| weekly price-edit limit P | 0, 1, 2, 4, 8, all; the ladder uses P = 4 | design choice (swept) | R2's price at the chosen P | EDITS when forced edits exceed P |
+| training scenarios | 24 (seed 11) | design choice (pinned) | in-sample numbers flatter the plan; the curse gap measures by how much | none |
+| evaluation scenarios | 1,000 (seed 999) | design choice | out-of-sample values carry sampling noise of their own; the paired SE of each lead is printed beside it | none |
+| experiment rel gap | 0.0001 | design choice | every comparison carries mip_gap × \|bound\| of slack | M10 when a solve stops short of it |
+| marginal-dollar step | $50 | design choice | a smaller step drowns in gap noise, a larger one averages over a kink | none |
+| set-spend cap (operating default) | 35% | design choice | priced as an existing rule; the experiments run without it | none |
+<!-- /generated:assumptions -->
 
 ## References
 
