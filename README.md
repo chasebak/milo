@@ -59,15 +59,15 @@ A budget-greedy baseline trails the exact MILP by 2.86%–5.26% across five budg
 
 ## Design decisions / what didn't work
 
-- **Hull, not big-M.** The GDP-to-MILP transform is the difference between solving and not solving this model. With identical instances and a 1e-4 rel gap, hull proves optimality in seconds while big-M hits the 120 s limit at every budget with a 5.1x–13.2x looser LP bound:
+- **Hull, not big-M.** The GDP-to-MILP transform is the difference between solving and not solving this model. With identical instances and a 1e-4 rel gap, hull reaches a plan that is optimal within a 0.01% gap in seconds while big-M hits the 120 s limit at every budget with a 5.1x–13.2x looser LP bound:
 
 | budget ($) | transform | incumbent ($) | LP bound ($) | build (s) | solve (s) | result |
 | --- | --- | --- | --- | --- | --- | --- |
-| 500.00 | hull | 801.95 | 804.18 | 1.04 | 2.1 | proved optimal |
+| 500.00 | hull | 801.95 | 804.18 | 1.04 | 2.1 | optimal within a 0.01% gap |
 | 500.00 | bigm | 750.30 | 10,642.59 | 0.17 | 120.6 | time limit (120 s) |
-| 1,500.00 | hull | 1,568.38 | 1,572.60 | 1.31 | 3.8 | proved optimal |
+| 1,500.00 | hull | 1,568.38 | 1,572.60 | 1.31 | 3.8 | optimal within a 0.01% gap |
 | 1,500.00 | bigm | 1,372.83 | 10,745.40 | 0.18 | 120.3 | time limit (120 s) |
-| 2,500.00 | hull | 2,054.08 | 2,089.31 | 1.05 | 4.0 | proved optimal |
+| 2,500.00 | hull | 2,054.08 | 2,089.31 | 1.05 | 4.0 | optimal within a 0.01% gap |
 | 2,500.00 | bigm | 1,896.07 | 10,745.40 | 0.17 | 120.7 | time limit (120 s) |
 
 - **The silent `Order paid by` fallback, made loud.** The commission-workbook loader defaults missing payment types to "Card" (the workbook's own convention for weeks before the column existed). An earlier version let a *misspelled* header fall into the same default, silently corrupting the card-fee share. The exact-header requirement is now documented in `SCHEMA.md`, and a contract test fails when the column is absorbed (the card share would read 1.0).

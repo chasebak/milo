@@ -135,6 +135,11 @@ def greedy_table(numbers):
 
 
 def hull_bigm_table(numbers):
+    # "optimal" in numbers.json means HiGHS stopped because the relative MIP gap reached
+    # the experiment tolerance, not that it closed the gap to zero. The label says how
+    # close, read from the pinned setting so it cannot drift from the solves themselves.
+    gap_percent = numbers["experiment_settings"]["mip_gap"] * 100.0
+    within_gap = "optimal within a " + pct(gap_percent) + " gap"
     rows = []
     bound_ratios = []
     hull_bounds = {}
@@ -145,7 +150,7 @@ def hull_bigm_table(numbers):
         if entry["transform"] == "bigm":
             ratio = entry["lp_relaxation_objective"] / hull_bounds[entry["budget"]]
             bound_ratios.append(ratio)
-        status = "proved optimal" if entry["optimal"] else "time limit (120 s)"
+        status = within_gap if entry["optimal"] else "time limit (120 s)"
         rows.append([money(entry["budget"]), entry["transform"], money(entry["objective"]),
                      money(entry["lp_relaxation_objective"]),
                      format(entry["build_seconds"], ".2f"), format(entry["solve_seconds"], ".1f"),

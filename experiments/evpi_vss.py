@@ -12,7 +12,9 @@ EEV  the EV solution's buy units AND price levels held fixed, valued over the FU
 WS   wait-and-see: one solve per scenario on a capped subset (default cap 30; a
      multiple of 3 keeps the low/base/high elasticity mix). The pinned problem has
      24 scenarios, so the cap does not bind and WS covers the full set - which is
-     what makes the inequalities below exact rather than subset approximations.
+     what makes the inequalities below full-set results rather than subset
+     approximations. Each WS solve must meet the rel gap or the module raises,
+     because a time-limited incumbent would understate WS.
 
 Maximization inequalities: EEV <= RP <= WS, so EVPI = WS - RP >= 0 and
 VSS = RP - EEV >= 0. All solves run at rel gap 1e-4 (the operating 0.005 would let
@@ -66,6 +68,14 @@ def evpi_vss(problem, budget=common.MAIN_BUDGET, ws_cap=30,
         ws_result = solve_plan(products, prices, single, budget=budget,
                                time_limit=time_limit, mip_gap=mip_gap, lp_relaxation=False)
         common.log_solve(log_rows, "evpi_vss", "WS scenario " + str(w), ws_result, 1, budget)
+        # WS is an upper bound only if each scenario's solve met the rel gap; a
+        # time-limited incumbent would understate WS, so EVPI would look smaller
+        # than it is and RP <= WS could fail for a reason that is not the model.
+        # Stop instead of averaging a value that is not within the gap.
+        if not ws_result["optimal"]:
+            raise RuntimeError("WS scenario " + str(w) + " stopped before the rel gap "
+                               + str(mip_gap) + " was met (termination "
+                               + str(ws_result["termination"]) + ")")
         ws_values.append(float(ws_result["objective"]))
     ws = float(np.mean(ws_values))
 

@@ -25,8 +25,14 @@ Rerun: `python -m experiments.evpi_vss`
 RP is the two-stage optimum re-valued through the same `evaluate_plan` accounting as
 every other plan (the module checks solver objective and re-valuation agree). EEV holds
 the mean-scenario plan's buy units *and* price levels fixed over the full set. WS
-solves each of the 24 scenarios to optimality, so `EEV ≤ RP ≤ WS` holds exactly, not
-as a subset approximation (definitions and inequalities: `MODEL.md` §5).
+solves each of the 24 scenarios (all of them, so it is not a subset approximation) at
+the same 1e-4 rel gap setting as every experiment solve. `evpi_vss` raises if any WS
+solve stops before meeting that gap; the check is newer than the committed
+`numbers.json`, which records no per-scenario WS status, so for the committed run it is
+unverified per scenario, and `tests/test_evpi_vss.py` re-runs the check on every CI
+run. `EEV ≤ RP ≤ WS` holds up to that gap: `tests/test_evpi_vss.py` asserts each
+inequality with a slack of exactly `mip_gap × max(1, |RP|)` and no more (definitions
+and inequalities: `MODEL.md` §5).
 
 | quantity (expected profit, $) | value |
 | --- | --- |
@@ -70,22 +76,23 @@ Rerun: `python -m experiments.hull_vs_bigm`
 
 Identical instances, identical solver, rel gap 1e-4, 120 s limit. The two MILPs
 describe the same feasible set, so a big-M incumbent can trail but never beat the
-hull-proven optimum (asserted in code). On this model, big-M's LP relaxation is
+hull optimum by more than the gap allows (asserted in code with a slack of
+2 × 1e-4 × |hull objective|). On this model, big-M's LP relaxation is
 5.1x–13.2x looser than hull's, and big-M hits the time limit at every budget while
-hull proves optimality in seconds:
+hull reaches a plan that is optimal within a 0.01% gap in seconds:
 
 | budget ($) | transform | incumbent ($) | LP bound ($) | build (s) | solve (s) | result |
 | --- | --- | --- | --- | --- | --- | --- |
-| 500.00 | hull | 801.95 | 804.18 | 1.04 | 2.1 | proved optimal |
+| 500.00 | hull | 801.95 | 804.18 | 1.04 | 2.1 | optimal within a 0.01% gap |
 | 500.00 | bigm | 750.30 | 10,642.59 | 0.17 | 120.6 | time limit (120 s) |
-| 1,500.00 | hull | 1,568.38 | 1,572.60 | 1.31 | 3.8 | proved optimal |
+| 1,500.00 | hull | 1,568.38 | 1,572.60 | 1.31 | 3.8 | optimal within a 0.01% gap |
 | 1,500.00 | bigm | 1,372.83 | 10,745.40 | 0.18 | 120.3 | time limit (120 s) |
-| 2,500.00 | hull | 2,054.08 | 2,089.31 | 1.05 | 4.0 | proved optimal |
+| 2,500.00 | hull | 2,054.08 | 2,089.31 | 1.05 | 4.0 | optimal within a 0.01% gap |
 | 2,500.00 | bigm | 1,896.07 | 10,745.40 | 0.17 | 120.7 | time limit (120 s) |
 
 Hull pays ~6x more build time (it adds disaggregated variables per disjunct) and earns
-it back ~30–60x over in solve time — against a big-M that still had not proved
-optimality when stopped. This measured difference is why
+it back ~30–60x over in solve time — against a big-M that still had not reached
+the 0.01% gap when stopped. This measured difference is why
 `transform="hull"` is the default (`MODEL.md` §1; Grossmann & Trespalacios 2013).
 
 ## 4. SAA convergence (the optimizer's curse, measured)

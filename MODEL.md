@@ -131,7 +131,8 @@ For maximization, `EEV ≤ RP ≤ WS`, so
 
 Both are reported **in-sample, conditional on the scenario set** (Birge & Louveaux
 2011). All experiment solves run at rel gap 1e-4, not the operating 0.005, so MIP gap
-noise cannot violate the inequalities.
+noise can bend the inequalities by at most that gap; `tests/test_evpi_vss.py` asserts
+them with a slack of exactly `mip_gap × max(1, |RP|)`.
 
 ## 6. Vocabulary: P-steps, M-flags, D-codes
 
@@ -150,7 +151,7 @@ scenarios (all defined above).
 | `M2` / `M3` | optimum sits at the top / bottom edge of the price grid — the grid, not the data, may be binding |
 | `M4` | nothing affordable: budget below the cheapest minimum order |
 | `M5` | lumpiness gap: LP relaxation beats the MILP by more than rounding — integrality is costing real money |
-| `M10` | not proven optimal (time limit or gap); termination and gap attached |
+| `M10` | HiGHS stopped without reaching the requested rel gap (`mip_gap`; any termination other than convergence, e.g. the time limit), so the plan is not certified optimal within that gap; termination and achieved gap attached |
 | `MIN_ORDER` | `max_units < min_order`, so `x_i` is fixed to 0 |
 
 **M-rules referenced in docstrings** (behavior, not emitted flags): M9 lead time (an

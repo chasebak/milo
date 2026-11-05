@@ -6,8 +6,9 @@ diagnostic path inside solve_plan), and the build/solve times. The two MILPs des
 the same feasible set, so WHEN BOTH solve to the 1e-4 rel gap their objectives must
 agree to within it; when a transform instead hits the per-solve time limit, its
 incumbent is a feasible plan of that same set, so it can trail but never beat the
-proven optimum. The hull relaxation is at least as tight, so its LP bound is never
-above big-M's (maximization). On the committed dataset big-M times out at every
+hull optimum (optimal within the 1e-4 gap) by more than the 2 x gap slack checked
+below. The hull relaxation is at least as tight, so its LP bound is never above
+big-M's (maximization). On the committed dataset big-M times out at every
 budget - that measured difference is the point of the table.
 
 Run from the repo root:  python -m experiments.hull_vs_bigm
@@ -54,11 +55,11 @@ def hull_vs_bigm(problem, budgets=TABLE_BUDGETS, mip_gap=common.EXPERIMENT_GAP,
         both_optimal = optimal["hull"] and optimal["bigm"]
         agree = abs(objectives["hull"] - objectives["bigm"]) <= slack
         if both_optimal and not agree:
-            raise AssertionError("both transforms proved optimal but disagree at budget "
+            raise AssertionError("both transforms reached the rel gap but disagree at budget "
                                  + str(budget))
         if optimal["hull"] and not optimal["bigm"]:
             if objectives["bigm"] > objectives["hull"] + slack:
-                raise AssertionError("big-M incumbent beats the hull-proven optimum at budget "
+                raise AssertionError("big-M incumbent beats the hull optimum by more than the gap at budget "
                                      + str(budget))
         rows[-1]["both_optimal"] = both_optimal
         rows[-2]["both_optimal"] = both_optimal
