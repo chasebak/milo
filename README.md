@@ -9,7 +9,7 @@ Two-stage stochastic restock + pricing optimizer for a card shop — Pyomo GDP �
 <!-- /generated:headline -->
 
 <!-- generated:try_it -->
-**Try it (60 s): the Restock Explorer page** in `docs/` (not published yet; serve it locally with `python -m http.server -d docs` and open the address it prints). One budget slider, which snaps to 36 solved budgets from $0 to $3,000, moves the out-of-sample profit-per-dollar tiles, the profit curve and the buy list together; the EEV → RP → WS bracket and the scenario-count check sit below. Budgets between the solved points were never solved, so the slider snaps instead of interpolating. The page computes nothing: `python -m experiments.viz build` writes its data and `tests/test_viz.py` checks it.
+**Try it (60 s): the Restock Explorer page** at https://chasebak.github.io/milo/ (or locally: `python -m http.server -d docs`). One budget slider, which snaps to 36 solved budgets from $0 to $3,000, moves the out-of-sample profit-per-dollar tiles, the profit curve and the buy list together; the EEV → RP → WS bracket and the scenario-count check sit below. Budgets between the solved points were never solved, so the slider snaps instead of interpolating. The page computes nothing: `python -m experiments.viz build` writes its data and `tests/test_viz.py` checks it.
 <!-- /generated:try_it -->
 
 ## KPIs

@@ -808,11 +808,11 @@ def decisions(reports):
 # ---- the Restock Explorer page ---------------------------------------------------
 
 def try_it(reports):
-    """The README "Try it" line; no live URL is claimed until the page is published."""
+    """The README "Try it" line: the hosted page and the local way to serve the same files."""
     page = reports["page"]
     budgets = page["settings"]["budgets"]
-    return ("**Try it (60 s): the Restock Explorer page** in `docs/` (not published yet; serve it locally "
-            "with `python -m http.server -d docs` and open the address it prints). One budget slider, which "
+    return ("**Try it (60 s): the Restock Explorer page** at https://chasebak.github.io/milo/ (or locally: "
+            "`python -m http.server -d docs`). One budget slider, which "
             "snaps to " + str(len(budgets)) + " solved budgets from $" + format(budgets[0], ",.0f") + " to $"
             + format(budgets[-1], ",.0f") + ", moves the out-of-sample profit-per-dollar tiles, the profit "
             "curve and the buy list together; the EEV → RP → WS bracket and the scenario-count check sit "
